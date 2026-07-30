@@ -6,33 +6,33 @@ export type ConceptMeta = {
 
 export const conceptMeta: ConceptMeta[] = [
   {
-    slug: "sunroom",
-    name: "Sunroom",
+    slug: "say-the-word",
+    name: "Say the Word",
     description:
-      "VoiceShop concept: a warm, playful home for the shopping buddy that talks shoppers from question to cart.",
+      "VoiceShop concept: spoken commands as floating shop tags — cream, black, and acid yellow.",
   },
   {
-    slug: "showfloor",
-    name: "Showfloor",
+    slug: "the-wave",
+    name: "The Wave",
     description:
-      "VoiceShop concept: a 3D showfloor where the live storefront demo tilts under your cursor.",
+      "VoiceShop concept: a cinematic voice wave moving through a real boutique.",
   },
   {
-    slug: "conveyor",
-    name: "Conveyor",
+    slug: "signal",
+    name: "Signal",
     description:
-      "VoiceShop concept: a moving belt of products, picked in real time by a shopper's voice.",
+      "VoiceShop concept: quiet premium light UI with a dot-matrix waveform and the real widget.",
   },
   {
-    slug: "billboard",
-    name: "Billboard",
+    slug: "loudmouth",
+    name: "Loudmouth",
     description:
-      "VoiceShop concept: kinetic typography selling voice-first commerce one verb at a time.",
+      "VoiceShop concept: marker scribbles, speech bubbles, and a store that talks back.",
   },
   {
-    slug: "aisle",
-    name: "The Aisle",
+    slug: "subtitles",
+    name: "Subtitles",
     description:
-      "VoiceShop concept: a scroll-driven walk down the aisle, from first question to checkout.",
+      "VoiceShop concept: the whole page is a live transcript — captions, karaoke highlights, CC energy.",
   },
 ];

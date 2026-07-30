@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import {
+  Archivo_Black,
   Baloo_2,
   Fraunces,
   Gabarito,
   IBM_Plex_Mono,
   Manrope,
+  Permanent_Marker,
   Sora,
 } from "next/font/google";
 import ConceptSwitcher from "@/components/ConceptSwitcher";
@@ -48,6 +50,20 @@ const gabarito = Gabarito({
   display: "swap",
 });
 
+const archivoBlack = Archivo_Black({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const marker = Permanent_Marker({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-marker",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
     default: "VoiceShop — a voice-first AI sales agent for Shopify",
@@ -71,7 +87,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${baloo.variable} ${fraunces.variable} ${sora.variable} ${plexMono.variable} ${gabarito.variable}`}
+      className={`${manrope.variable} ${baloo.variable} ${fraunces.variable} ${sora.variable} ${plexMono.variable} ${gabarito.variable} ${archivoBlack.variable} ${marker.variable}`}
     >
       <body>
         {children}
