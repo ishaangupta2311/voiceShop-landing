@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Manrope } from "next/font/google";
+import {
+  Archivo_Black,
+  Baloo_2,
+  Fraunces,
+  IBM_Plex_Mono,
+  Instrument_Serif,
+  Manrope,
+} from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -12,6 +19,29 @@ const instrumentSerif = Instrument_Serif({
   weight: "400",
   style: ["normal", "italic"],
   variable: "--font-display",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-editorial",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
+});
+
+const archivoBlack = Archivo_Black({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-poster",
+});
+
+const baloo = Baloo_2({
+  subsets: ["latin"],
+  variable: "--font-round",
 });
 
 export const metadata: Metadata = {
@@ -31,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${instrumentSerif.variable}`}
+      className={`${manrope.variable} ${instrumentSerif.variable} ${fraunces.variable} ${plexMono.variable} ${archivoBlack.variable} ${baloo.variable}`}
     >
       <body>{children}</body>
     </html>

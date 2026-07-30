@@ -1,0 +1,312 @@
+.page {
+  --signal: #ff4d00;
+  --black: #0c0c0c;
+  --bone: #f2ede4;
+
+  min-height: 100svh;
+  background: var(--signal);
+  color: var(--black);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 4px solid var(--black);
+  padding: 18px 28px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  animation: posterSlam 500ms both;
+}
+
+.brand {
+  font-family: var(--font-poster), sans-serif;
+  font-size: 16px;
+}
+
+.headerNote {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
+
+.headerCta {
+  font-family: var(--font-poster), sans-serif;
+  font-size: 13px;
+  background: var(--black);
+  color: var(--signal);
+  padding: 10px 22px;
+  transition:
+    background 150ms,
+    color 150ms;
+}
+
+.headerCta:hover {
+  background: var(--bone);
+  color: var(--black);
+}
+
+.hero {
+  padding: 40px 28px 0;
+}
+
+.stack {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.stackLine {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 4px solid var(--black);
+  padding: 6px 0 10px;
+  overflow: hidden;
+}
+
+.stackLineAlt {
+  flex-direction: row;
+}
+
+.stackWord {
+  font-family: var(--font-poster), sans-serif;
+  font-size: clamp(64px, 14.5vw, 190px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  animation: posterRise 600ms 150ms both;
+}
+
+.stackLine:nth-child(2) .stackWord {
+  animation-delay: 300ms;
+}
+
+.stackLine:nth-child(3) .stackWord {
+  animation-delay: 450ms;
+}
+
+.stackWordOutline {
+  color: transparent;
+  -webkit-text-stroke: 3px var(--black);
+}
+
+.stackTag {
+  font-size: clamp(12px, 1.6vw, 18px);
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  animation: posterRise 600ms 400ms both;
+}
+
+.heroFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 26px 0 40px;
+  flex-wrap: wrap;
+  animation: posterRise 600ms 600ms both;
+}
+
+.manifesto {
+  margin: 0;
+  max-width: 560px;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.primaryCta {
+  font-family: var(--font-poster), sans-serif;
+  font-size: clamp(15px, 2vw, 20px);
+  background: var(--black);
+  color: var(--signal);
+  padding: 22px 36px;
+  border: 4px solid var(--black);
+  transition:
+    background 150ms,
+    color 150ms,
+    transform 150ms;
+}
+
+.primaryCta:hover {
+  background: var(--signal);
+  color: var(--black);
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--black);
+}
+
+.marquee {
+  border-top: 4px solid var(--black);
+  border-bottom: 4px solid var(--black);
+  background: var(--black);
+  color: var(--signal);
+  overflow: hidden;
+  padding: 12px 0;
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  animation: posterMarquee 30s linear infinite;
+}
+
+.marqueeTrack span {
+  font-family: var(--font-poster), sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+  padding-right: 20px;
+}
+
+.blocks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.block {
+  border-right: 4px solid var(--black);
+  border-bottom: 4px solid var(--black);
+  padding: 34px 28px 42px;
+  transition:
+    background 150ms,
+    color 150ms;
+}
+
+.block:last-child {
+  border-right: none;
+}
+
+.block:hover {
+  background: var(--black);
+  color: var(--signal);
+}
+
+.blockStat {
+  font-family: var(--font-poster), sans-serif;
+  font-size: 15px;
+  border: 3px solid currentColor;
+  display: inline-block;
+  padding: 5px 12px;
+}
+
+.block h2 {
+  margin: 20px 0 12px;
+  font-family: var(--font-poster), sans-serif;
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1.05;
+}
+
+.block p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.transcript {
+  padding: 44px 28px 60px;
+}
+
+.transcriptRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 18px 0;
+  border-bottom: 2px solid var(--black);
+}
+
+.transcriptWho {
+  font-family: var(--font-poster), sans-serif;
+  font-size: 12px;
+  background: var(--bone);
+  border: 3px solid var(--black);
+  padding: 6px 12px;
+  flex-shrink: 0;
+}
+
+.transcriptBot {
+  background: var(--black);
+  color: var(--bone);
+}
+
+.transcriptRow p {
+  margin: 2px 0 0;
+  font-size: clamp(16px, 2.4vw, 24px);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  border-top: 4px solid var(--black);
+  padding: 16px 28px 30px;
+  font-family: var(--font-poster), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
+
+@media (max-width: 900px) {
+  .blocks {
+    grid-template-columns: 1fr;
+  }
+
+  .block {
+    border-right: none;
+  }
+
+  .headerNote {
+    display: none;
+  }
+}
+
+@keyframes posterSlam {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes posterRise {
+  from {
+    opacity: 0;
+    transform: translateY(60%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes posterMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marqueeTrack {
+    animation: none !important;
+  }
+}

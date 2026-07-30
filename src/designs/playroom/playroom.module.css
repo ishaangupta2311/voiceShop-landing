@@ -1,0 +1,451 @@
+.page {
+  --cream: #fff6ec;
+  --grape: #3a2e4f;
+  --peach: #ffb48a;
+  --bubblegum: #ff7bac;
+  --sky: #8ed0ff;
+  --butter: #ffe27a;
+
+  position: relative;
+  min-height: 100svh;
+  background: var(--cream);
+  color: var(--grape);
+  font-family: var(--font-round), var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.blobOne {
+  width: 480px;
+  height: 480px;
+  top: -140px;
+  right: -120px;
+  background: var(--peach);
+  animation: playFloat 9s ease-in-out infinite alternate;
+}
+
+.blobTwo {
+  width: 420px;
+  height: 420px;
+  bottom: -160px;
+  left: -140px;
+  background: var(--sky);
+  animation: playFloat 11s ease-in-out infinite alternate-reverse;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 44px, 1100px);
+  margin: 0 auto;
+  padding: 26px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 19px;
+}
+
+.brandFace {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--butter);
+  border: 2.5px solid var(--grape);
+  font-size: 18px;
+  box-shadow: 3px 3px 0 var(--grape);
+}
+
+.headerCta {
+  font-weight: 700;
+  font-size: 15px;
+  background: #fff;
+  border: 2.5px solid var(--grape);
+  border-radius: 999px;
+  padding: 10px 22px;
+  box-shadow: 3px 3px 0 var(--grape);
+  transition:
+    transform 180ms,
+    box-shadow 180ms;
+}
+
+.headerCta:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--grape);
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 44px, 860px);
+  margin: 0 auto;
+  padding: 76px 0 40px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  margin: 0 0 24px;
+  background: #fff;
+  border: 2.5px solid var(--grape);
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 3px 3px 0 var(--grape);
+  animation: playPop 600ms 100ms both;
+}
+
+.headline {
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(40px, 6.8vw, 76px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  animation: playPop 650ms 220ms both;
+}
+
+.squiggle {
+  position: relative;
+  color: var(--bubblegum);
+  white-space: nowrap;
+}
+
+.squiggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 8px;
+  background: radial-gradient(
+      circle at 4px -2px,
+      transparent 6px,
+      var(--butter) 6px,
+      var(--butter) 8.5px,
+      transparent 9px
+    )
+    repeat-x;
+  background-size: 16px 12px;
+}
+
+.sub {
+  margin: 26px auto 0;
+  max-width: 520px;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(58, 46, 79, 0.75);
+  animation: playPop 650ms 340ms both;
+}
+
+.heroActions {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  animation: playPop 650ms 460ms both;
+}
+
+.primaryCta {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 17px;
+  background: var(--bubblegum);
+  color: #fff;
+  border: 2.5px solid var(--grape);
+  border-radius: 999px;
+  padding: 16px 34px;
+  box-shadow: 4px 4px 0 var(--grape);
+  transition:
+    transform 180ms,
+    box-shadow 180ms,
+    background 180ms;
+}
+
+.primaryCta:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--grape);
+  background: #ff8fb8;
+}
+
+.secondaryCta {
+  font-weight: 700;
+  font-size: 16px;
+  border-bottom: 3px solid var(--butter);
+  padding-bottom: 2px;
+  transition: border-color 180ms;
+}
+
+.secondaryCta:hover {
+  border-color: var(--bubblegum);
+}
+
+.chat {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 44px, 560px);
+  margin: 0 auto;
+  padding: 40px 0 30px;
+}
+
+.chatWindow {
+  background: #fff;
+  border: 2.5px solid var(--grape);
+  border-radius: 28px;
+  padding: 28px 24px 24px;
+  box-shadow: 6px 6px 0 var(--grape);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: playPop 650ms 580ms both;
+}
+
+.bubble {
+  max-width: 82%;
+  padding: 13px 18px;
+  border: 2px solid var(--grape);
+  font-size: 15px;
+  line-height: 1.55;
+  font-family: var(--font-sans), sans-serif;
+}
+
+.bubbleShopper {
+  align-self: flex-end;
+  background: var(--sky);
+  border-radius: 20px 20px 6px 20px;
+  animation: playBubble 450ms 800ms both;
+}
+
+.bubbleBot {
+  align-self: flex-start;
+  background: var(--cream);
+  border-radius: 20px 20px 20px 6px;
+  animation: playBubble 450ms 1200ms both;
+}
+
+.bubbleShopper:nth-of-type(3) {
+  animation-delay: 1600ms;
+}
+
+.bubbleCart {
+  align-self: center;
+  background: var(--butter);
+  border-radius: 999px;
+  font-weight: 600;
+  animation: playBubble 450ms 2000ms both;
+}
+
+.chatMic {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-top: 2px dashed rgba(58, 46, 79, 0.25);
+  padding-top: 16px;
+}
+
+.micIcon {
+  font-size: 20px;
+}
+
+.micWave {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+}
+
+.micWave span {
+  width: 5px;
+  border-radius: 999px;
+  background: var(--bubblegum);
+  height: 100%;
+  animation: playWave 900ms ease-in-out infinite alternate;
+}
+
+.micWave span:nth-child(1) {
+  animation-delay: 0ms;
+}
+.micWave span:nth-child(2) {
+  animation-delay: 120ms;
+}
+.micWave span:nth-child(3) {
+  animation-delay: 240ms;
+}
+.micWave span:nth-child(4) {
+  animation-delay: 360ms;
+}
+.micWave span:nth-child(5) {
+  animation-delay: 480ms;
+}
+
+.micLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(58, 46, 79, 0.6);
+}
+
+.perks {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 44px, 1100px);
+  margin: 0 auto;
+  padding: 50px 0 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.perk {
+  border: 2.5px solid var(--grape);
+  border-radius: 24px;
+  padding: 28px 26px;
+  box-shadow: 5px 5px 0 var(--grape);
+  transition:
+    transform 200ms,
+    box-shadow 200ms;
+}
+
+.perk:hover {
+  transform: translateY(-4px) rotate(-0.5deg);
+  box-shadow: 8px 9px 0 var(--grape);
+}
+
+.peach {
+  background: var(--peach);
+}
+
+.sky {
+  background: var(--sky);
+}
+
+.bubblegum {
+  background: var(--bubblegum);
+  color: #fff;
+}
+
+.bubblegum p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.perkEmoji {
+  font-size: 30px;
+}
+
+.perk h2 {
+  margin: 14px 0 10px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.perk p {
+  margin: 0;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: rgba(58, 46, 79, 0.8);
+}
+
+.closer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 60px 22px 70px;
+}
+
+.closer h2 {
+  margin: 0 0 26px;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 800;
+}
+
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 0 34px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(58, 46, 79, 0.55);
+}
+
+@media (max-width: 860px) {
+  .perks {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes playFloat {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(-30px, 30px) scale(1.08);
+  }
+}
+
+@keyframes playPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(14px);
+  }
+  70% {
+    transform: scale(1.02) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes playBubble {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  75% {
+    transform: scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes playWave {
+  from {
+    transform: scaleY(0.3);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
