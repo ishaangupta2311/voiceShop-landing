@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VoiceShop — Design Decisions</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #14211c;
+        --muted: #59675f;
+        --paper: #f5f7f2;
+        --surface: #ffffff;
+        --line: #dce3db;
+        --accent: #2d6a4f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          16px/1.6 ui-sans-serif,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      main {
+        width: min(100% - 32px, 820px);
+        margin: 0 auto;
+        padding: 72px 0 96px;
+      }
+
+      header {
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 750;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(40px, 8vw, 72px);
+        line-height: 0.95;
+        letter-spacing: -0.055em;
+      }
+
+      .lede {
+        max-width: 680px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      section {
+        padding: 32px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      h2 {
+        margin: 0 0 16px;
+        font-size: 20px;
+        letter-spacing: -0.025em;
+      }
+
+      p,
+      ul {
+        margin-top: 0;
+      }
+
+      ul {
+        margin-bottom: 0;
+        padding-left: 20px;
+      }
+
+      li + li {
+        margin-top: 8px;
+      }
+
+      code {
+        padding: 2px 5px;
+        border-radius: 4px;
+        background: var(--surface);
+        font-size: 0.9em;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .note {
+        margin-top: 24px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--surface);
+      }
+
+      .note strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Portable creative brief · 30 July 2026</p>
+        <h1>VoiceShop</h1>
+        <p class="lede">
+          Product and interaction decisions for agents creating additional
+          marketing-site concepts. This brief intentionally excludes existing
+          visual directions so new work can remain genuinely independent.
+        </p>
+      </header>
+
+      <section>
+        <h2>Product and audience</h2>
+        <ul>
+          <li>The customer-facing product name is <strong>VoiceShop</strong>.</li>
+          <li>
+            VoiceShop is a voice-first AI sales agent for Shopify storefronts.
+          </li>
+          <li>
+            The primary audience is ecommerce founders, operators, and growth
+            teams evaluating a sales-focused shopping assistant.
+          </li>
+          <li>
+            The sibling <code>digital-salesman-app</code> repository is the
+            source of truth for product capabilities; it is not the public
+            product name.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Verified product story</h2>
+        <ul>
+          <li>Understands the storefront page a shopper is viewing.</li>
+          <li>
+            Searches the published product catalog for broad discovery and
+            specific products.
+          </li>
+          <li>
+            Presents products in the conversation and changes the main
+            storefront surface.
+          </li>
+          <li>
+            Uses current catalog, price, inventory, variant, and cart context
+            rather than inventing products or availability.
+          </li>
+          <li>
+            Can open products and initiate validated add-to-cart or
+            remove-from-cart actions.
+          </li>
+        </ul>
+        <div class="note">
+          <strong>Positioning distinction</strong>
+          The shopper speaks and the storefront responds. Present VoiceShop as
+          an active sales layer, not a generic support chatbot.
+        </div>
+      </section>
+
+      <section>
+        <h2>Required deliverable</h2>
+        <ul>
+          <li>Create five complete and visually independent landing pages.</li>
+          <li>
+            Each page includes a hero, concrete product proof, workflow or
+            product depth, and a final waitlist conversion.
+          </li>
+          <li>
+            A persistent, accessible control cycles through the five designs.
+          </li>
+          <li>
+            The active design is represented in the URL so it survives refresh
+            and can be shared.
+          </li>
+          <li>
+            Shared logic is acceptable, but layouts must be independent
+            components rather than one template with five themes.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Conversion behavior</h2>
+        <ul>
+          <li>The primary CTA is <strong>Join the waitlist</strong>.</li>
+          <li>
+            Waitlist forms are visual prototypes only: no network request,
+            database, service, analytics event, or success claim.
+          </li>
+          <li>
+            Submitting must not navigate away or imply that data was stored.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Visual constraints</h2>
+        <ul>
+          <li>The dominant page theme must be light, not dark.</li>
+          <li>Do not use an editorial or magazine-style art direction.</li>
+          <li>
+            Treat the first viewport as a strong product poster with one
+            dominant visual anchor and unmistakable VoiceShop branding.
+          </li>
+          <li>
+            Avoid generic SaaS card grids, decorative dashboard mosaics,
+            excessive pills, filler copy, and theme-only recolors.
+          </li>
+          <li>Use no more than two typefaces per concept.</li>
+          <li>
+            Use Loomi Shopping Agent by Bloomreach and Rep AI Sales Agent as
+            market-caliber references for product clarity and guided-commerce
+            storytelling, never as layouts to copy.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Mobile, accessibility, and motion</h2>
+        <ul>
+          <li>
+            Compose each concept for mobile deliberately; do not merely shrink
+            the desktop page.
+          </li>
+          <li>
+            Budget full-height sections with <code>100svh</code>, including
+            persistent controls.
+          </li>
+          <li>
+            Use responsive media, readable line lengths, 44px minimum tap
+            targets, and 16px form text to avoid iOS input zoom.
+          </li>
+          <li>
+            Keep the design-cycle control thumb-accessible and clear of primary
+            content.
+          </li>
+          <li>
+            Maintain semantic landmarks, visible focus states, sufficient
+            contrast, labelled inputs, and keyboard operability.
+          </li>
+          <li>
+            Include purposeful entrance, scroll, and interaction motion while
+            honoring <code>prefers-reduced-motion</code>.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Do not invent</h2>
+        <ul>
+          <li>No conversion, revenue, ROI, latency, or adoption metrics.</li>
+          <li>No customer logos, testimonials, awards, or partner claims.</li>
+          <li>No waitlist confirmation or claim that an email was saved.</li>
+          <li>No unverified checkout or payment completion claims.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Quality gate</h2>
+        <ul>
+          <li>Verify all five designs at desktop and mobile widths.</li>
+          <li>Verify cycling, direct URL selection, refresh, and wraparound.</li>
+          <li>Verify keyboard focus and reduced-motion behavior.</li>
+          <li>Run lint, TypeScript checking, and the production build.</li>
+        </ul>
+      </section>
+
+      <p class="note">
+        Competitive references:
+        <a
+          href="https://www.bloomreach.com/en/products/loomi-shopping-agent"
+          >Loomi Shopping Agent</a
+        >
+        and
+        <a href="https://www.hellorep.ai/platform/sales-agent"
+          >Rep AI Sales Agent</a
+        >.
+      </p>
+    </main>
+  </body>
+</html>
