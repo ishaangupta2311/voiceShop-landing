@@ -1,0 +1,33 @@
+# Digital Salesman marketing site
+
+Marketing website for the Digital Salesman Shopify app.
+
+## Stack
+
+- Next.js 16 App Router
+- React 19 and TypeScript
+- Tailwind CSS 4
+- ESLint
+
+## Local development
+
+Use Node.js 20.19 or newer, then install dependencies and run:
+
+```bash
+npm install
+npm run dev
+```
+
+The site will be available at [http://localhost:3000](http://localhost:3000).
+
+## Verification
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
+
+The product source of truth lives in the sibling `digital-salesman-app`
+repository. Marketing claims should stay aligned with capabilities verified
+there.
