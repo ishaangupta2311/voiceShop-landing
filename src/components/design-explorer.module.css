@@ -1,0 +1,94 @@
+.explorer,
+.designCanvas {
+  min-height: 100svh;
+}
+
+.explorer {
+  position: relative;
+}
+
+.switcher {
+  position: fixed;
+  z-index: 100;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid rgba(19, 27, 23, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #17201b;
+  font-family: var(--font-manrope), sans-serif;
+  box-shadow: 0 12px 40px rgba(19, 27, 23, 0.15);
+  backdrop-filter: blur(18px);
+}
+
+.designMeta {
+  min-width: 136px;
+  display: grid;
+  gap: 1px;
+  padding: 4px 10px 4px 14px;
+}
+
+.designMeta span {
+  color: #6a756e;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.designMeta strong {
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.switcher button {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #17201b;
+  color: white;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 750;
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.switcher button:hover {
+  transform: translateY(-1px);
+  background: #2e3b34;
+}
+
+.switcher button:focus-visible {
+  outline: 3px solid #89dcb7;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .switcher {
+    right: max(10px, env(safe-area-inset-right));
+    bottom: max(10px, env(safe-area-inset-bottom));
+    left: max(10px, env(safe-area-inset-left));
+    justify-content: space-between;
+  }
+
+  .designMeta {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .switcher button {
+    min-width: 128px;
+  }
+}

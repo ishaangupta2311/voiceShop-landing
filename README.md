@@ -1,6 +1,6 @@
-# Digital Salesman marketing site
+# VoiceShop marketing site
 
-Marketing website for the Digital Salesman Shopify app.
+Marketing website for the VoiceShop Shopify app.
 
 ## Stack
 

@@ -1,0 +1,173 @@
+.voiceMark {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.voiceMark span {
+  width: 2px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--mark-wave, white);
+}
+
+.voiceMark span:nth-child(2),
+.voiceMark span:nth-child(4) {
+  height: 14px;
+}
+
+.voiceMark span:nth-child(3) {
+  height: 20px;
+}
+
+.waitlist {
+  width: min(100%, 680px);
+}
+
+.waitlistRow {
+  display: flex;
+  gap: 10px;
+  padding: 7px;
+  border: 1px solid var(--waitlist-border);
+  border-radius: 999px;
+  background: var(--waitlist-surface);
+}
+
+.waitlist input {
+  min-width: 0;
+  flex: 1;
+  min-height: 52px;
+  padding: 0 18px;
+  border: 0;
+  outline: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--waitlist-ink);
+  font-size: 16px;
+}
+
+.waitlist input::placeholder {
+  color: color-mix(in srgb, var(--waitlist-ink) 48%, transparent);
+}
+
+.waitlist input:focus-visible {
+  box-shadow: 0 0 0 3px var(--waitlist-focus);
+}
+
+.waitlist button {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--waitlist-button);
+  color: var(--waitlist-button-ink);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 750;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.waitlist button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--waitlist-button) 24%, transparent);
+}
+
+.waitlist button:focus-visible {
+  outline: 3px solid var(--waitlist-focus);
+  outline-offset: 3px;
+}
+
+.waitlist p {
+  margin: 10px 16px 0;
+  color: var(--waitlist-note);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.green {
+  --waitlist-surface: rgba(255, 255, 255, 0.86);
+  --waitlist-border: rgba(18, 35, 17, 0.18);
+  --waitlist-ink: #132212;
+  --waitlist-button: #1c4517;
+  --waitlist-button-ink: #f7ffe7;
+  --waitlist-focus: #b6ef45;
+  --waitlist-note: #53614c;
+}
+
+.blue {
+  --waitlist-surface: rgba(255, 255, 255, 0.93);
+  --waitlist-border: rgba(9, 65, 111, 0.2);
+  --waitlist-ink: #0a3150;
+  --waitlist-button: #0877d1;
+  --waitlist-button-ink: white;
+  --waitlist-focus: #7ec9ff;
+  --waitlist-note: #557185;
+}
+
+.red {
+  --waitlist-surface: white;
+  --waitlist-border: #f3b8ad;
+  --waitlist-ink: #281715;
+  --waitlist-button: #e43720;
+  --waitlist-button-ink: white;
+  --waitlist-focus: #ff9c89;
+  --waitlist-note: #7e5a54;
+}
+
+.azure {
+  --waitlist-surface: #fffaf0;
+  --waitlist-border: rgba(25, 85, 126, 0.24);
+  --waitlist-ink: #173d55;
+  --waitlist-button: #176f9e;
+  --waitlist-button-ink: white;
+  --waitlist-focus: #88caef;
+  --waitlist-note: #6b706b;
+}
+
+.mint {
+  --waitlist-surface: rgba(255, 255, 255, 0.94);
+  --waitlist-border: rgba(22, 90, 69, 0.2);
+  --waitlist-ink: #18382e;
+  --waitlist-button: #18684d;
+  --waitlist-button-ink: white;
+  --waitlist-focus: #71dfb7;
+  --waitlist-note: #59726a;
+}
+
+.compact {
+  max-width: 560px;
+}
+
+@media (max-width: 600px) {
+  .waitlistRow {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 6px;
+    border-radius: 22px;
+  }
+
+  .waitlist input,
+  .waitlist button {
+    width: 100%;
+    min-height: 54px;
+  }
+
+  .waitlist input {
+    padding: 0 14px;
+  }
+
+  .waitlist p {
+    margin-inline: 8px;
+  }
+}
