@@ -1,5 +1,6 @@
-import DesignGallery from "@/components/DesignGallery";
+import { redirect } from "next/navigation";
+import { conceptMeta } from "@/concepts/meta";
 
 export default function Home() {
-  return <DesignGallery />;
+  redirect(`/${conceptMeta[0].slug}`);
 }

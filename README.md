@@ -1,6 +1,10 @@
-# Digital Salesman marketing site
+# VoiceShop marketing site
 
-Marketing website for the Digital Salesman Shopify app.
+Marketing website for VoiceShop, the voice-first AI sales agent for Shopify
+(internally the `digital-salesman-app` repository). This branch holds five
+switchable landing-page concepts — the active concept lives in the URL path
+(`/sunroom`, `/corner-shop`, `/ripple`, `/soundcheck`, `/parade`) and a
+persistent control cycles between them.
 
 ## Stack
 
