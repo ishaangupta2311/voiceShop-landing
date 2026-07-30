@@ -11,7 +11,7 @@ Marketing website for the Digital Salesman Shopify app.
 
 ## Local development
 
-Use Node.js 20.19 or newer, then install dependencies and run:
+Use Node.js 20.19.x, 22.13 or newer, or 24+, then install dependencies and run:
 
 ```bash
 npm install
