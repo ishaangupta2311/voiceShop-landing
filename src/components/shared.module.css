@@ -27,6 +27,67 @@
 }
 
 /*
+ * Theme swatches for ThemedDemo — neutral styling that sits comfortably on
+ * any light concept; the swatch color itself comes from the theme data.
+ */
+.swatchRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.swatchLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--demo-swatch-label, inherit);
+}
+
+.swatches {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.swatch span {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.swatch:hover span {
+  transform: scale(1.12);
+}
+
+.swatch[aria-pressed="true"] span {
+  transform: scale(1.18);
+  box-shadow:
+    0 0 0 3px var(--demo-swatch-ring, #ffffff),
+    0 0 0 5px currentColor;
+}
+
+.swatch:focus-visible {
+  outline: 3px solid var(--demo-swatch-ring-focus, #1b1a17);
+  outline-offset: 2px;
+}
+
+/*
  * Waitlist form — structure lives here; each concept themes it by setting
  * the --wl-* custom properties on an ancestor.
  */

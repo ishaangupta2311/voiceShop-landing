@@ -12,27 +12,27 @@ export const conceptMeta: ConceptMeta[] = [
       "VoiceShop concept: a warm, playful home for the shopping buddy that talks shoppers from question to cart.",
   },
   {
-    slug: "corner-shop",
-    name: "Corner Shop",
+    slug: "showfloor",
+    name: "Showfloor",
     description:
-      "VoiceShop concept: a neighborhood shopkeeper for every screen — voice-first selling with storefront charm.",
+      "VoiceShop concept: a 3D showfloor where the live storefront demo tilts under your cursor.",
   },
   {
-    slug: "ripple",
-    name: "Ripple",
+    slug: "conveyor",
+    name: "Conveyor",
     description:
-      "VoiceShop concept: a minimal study of one voice moving an entire storefront.",
+      "VoiceShop concept: a moving belt of products, picked in real time by a shopper's voice.",
   },
   {
-    slug: "soundcheck",
-    name: "Soundcheck",
+    slug: "billboard",
+    name: "Billboard",
     description:
-      "VoiceShop concept: a light studio take on a storefront tuned to selling — voice in, cart out.",
+      "VoiceShop concept: kinetic typography selling voice-first commerce one verb at a time.",
   },
   {
-    slug: "parade",
-    name: "Parade",
+    slug: "aisle",
+    name: "The Aisle",
     description:
-      "VoiceShop concept: a loud, cheerful poster — say it, see it, cart it.",
+      "VoiceShop concept: a scroll-driven walk down the aisle, from first question to checkout.",
   },
 ];

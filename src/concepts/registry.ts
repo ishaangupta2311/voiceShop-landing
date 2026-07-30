@@ -1,9 +1,9 @@
 import type { ComponentType } from "react";
 import { conceptMeta, type ConceptMeta } from "@/concepts/meta";
-import CornerShop from "@/concepts/corner-shop/CornerShop";
-import Parade from "@/concepts/parade/Parade";
-import Ripple from "@/concepts/ripple/Ripple";
-import Soundcheck from "@/concepts/soundcheck/Soundcheck";
+import Aisle from "@/concepts/aisle/Aisle";
+import Billboard from "@/concepts/billboard/Billboard";
+import Conveyor from "@/concepts/conveyor/Conveyor";
+import Showfloor from "@/concepts/showfloor/Showfloor";
 import Sunroom from "@/concepts/sunroom/Sunroom";
 
 export type ConceptEntry = ConceptMeta & {
@@ -12,10 +12,10 @@ export type ConceptEntry = ConceptMeta & {
 
 const components: Record<string, ComponentType> = {
   sunroom: Sunroom,
-  "corner-shop": CornerShop,
-  ripple: Ripple,
-  soundcheck: Soundcheck,
-  parade: Parade,
+  showfloor: Showfloor,
+  conveyor: Conveyor,
+  billboard: Billboard,
+  aisle: Aisle,
 };
 
 export const concepts: ConceptEntry[] = conceptMeta.map((meta) => ({
