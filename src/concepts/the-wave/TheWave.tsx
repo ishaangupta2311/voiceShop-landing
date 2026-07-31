@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { StoreDemo } from "@/components/StoreDemo";
 import { Reveal, WaitlistForm } from "@/components/shared";
+import WaveMotion from "./WaveMotion";
 import styles from "./the-wave.module.css";
 
 const capabilities = [
@@ -55,9 +56,15 @@ const faqs = [
 
 export default function TheWave() {
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-wave-page>
+      <WaveMotion />
       {/* ============== HERO ============== */}
-      <section className={styles.hero} id="top">
+      <section
+        className={styles.hero}
+        id="top"
+        data-wave-hero
+        data-wave-section
+      >
         <Image
           className={styles.heroImage}
           src="/images/store-aisle.webp"
@@ -68,7 +75,7 @@ export default function TheWave() {
         />
         <div className={styles.heroShade} aria-hidden="true" />
 
-        <header className={styles.nav}>
+        <header className={styles.nav} data-wave-nav>
           <a className={styles.logo} href="#top">
             VoiceShop
           </a>
@@ -111,7 +118,12 @@ export default function TheWave() {
       </section>
 
       {/* ============== DEMO ============== */}
-      <section className={styles.demoSection} id="demo">
+      <section
+        className={styles.demoSection}
+        id="demo"
+        data-wave-demo
+        data-wave-section
+      >
         <Reveal className={styles.demoIntro}>
           <p className={styles.eyebrow}>One real conversation</p>
           <h2>
@@ -131,7 +143,11 @@ export default function TheWave() {
       </section>
 
       {/* ============== CAPABILITIES ============== */}
-      <section className={styles.capSection} id="how">
+      <section
+        className={styles.capSection}
+        id="how"
+        data-wave-section
+      >
         <Reveal>
           <p className={styles.eyebrow}>How it works</p>
           <h2 className={styles.capTitle}>
@@ -140,19 +156,30 @@ export default function TheWave() {
             <em>All of them, on every visit.</em>
           </h2>
         </Reveal>
-        <div className={styles.capList}>
-          {capabilities.map((cap, index) => (
-            <Reveal key={cap.n} className={styles.capRow} delay={index * 70}>
+        <div className={styles.capList} data-scroll-cards>
+          {capabilities.map((cap) => (
+            <article
+              key={cap.n}
+              className={styles.capRow}
+              data-scroll-card
+            >
               <span className={styles.capNum}>{cap.n}</span>
               <h3>{cap.title}</h3>
               <p>{cap.body}</p>
-            </Reveal>
+              <span className={styles.capArrow} aria-hidden="true">
+                ↗
+              </span>
+            </article>
           ))}
         </div>
       </section>
 
       {/* ============== OWNER / INTENT ============== */}
-      <section className={styles.ownerSection} id="owner">
+      <section
+        className={styles.ownerSection}
+        id="owner"
+        data-wave-section
+      >
         <div className={styles.ownerGrid}>
           <Reveal className={styles.ownerCopy}>
             <p className={styles.eyebrow}>For the merchant</p>
@@ -230,7 +257,11 @@ export default function TheWave() {
       </section>
 
       {/* ============== FAQ ============== */}
-      <section className={styles.faqSection} id="faq">
+      <section
+        className={styles.faqSection}
+        id="faq"
+        data-wave-section
+      >
         <Reveal>
           <p className={styles.eyebrow}>Questions</p>
           <h2 className={styles.faqTitle}>Before you ask</h2>
@@ -251,7 +282,11 @@ export default function TheWave() {
       </section>
 
       {/* ============== WAITLIST ============== */}
-      <section className={styles.waitlistSection} id="waitlist">
+      <section
+        className={styles.waitlistSection}
+        id="waitlist"
+        data-wave-section
+      >
         <Image
           className={styles.waitlistImage}
           src="/images/soft-texture.webp"

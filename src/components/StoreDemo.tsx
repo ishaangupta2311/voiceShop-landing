@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import styles from "./store-demo.module.css";
 
 export type StoreTheme = {
@@ -28,6 +28,42 @@ const products = [
   { name: "Extract Seltzer", price: "$6.00", tone: "h", sold: false },
 ];
 
+function ProductPopArt({ tone }: { tone: string }) {
+  const clipId = `product-pop-${tone}`;
+
+  return (
+    <svg
+      className={styles.productPop}
+      viewBox="0 0 100 100"
+      aria-hidden="true"
+    >
+      <defs>
+        <clipPath id={clipId}>
+          <path
+            className={styles.svgClip}
+            d="M9 53C8 36 21 17 40 14c14-3 23 4 34 12 11 8 20 19 17 35-3 17-18 28-35 29-18 2-36-3-43-18-3-6-4-12-4-19Z"
+          />
+        </clipPath>
+      </defs>
+
+      <g className={styles.popLayer} clipPath={`url(#${clipId})`}>
+        <rect className={styles.svgField} width="100" height="100" />
+        <circle className={styles.svgHalo} cx="50" cy="48" r="31" />
+        <g className={styles.svgProduct}>
+          <rect x="40" y="24" width="20" height="10" rx="3" />
+          <path d="M37 39c0-4 3-7 7-7h12c4 0 7 3 7 7v37c0 5-4 8-8 8H45c-4 0-8-3-8-8V39Z" />
+          <path className={styles.svgLabel} d="M41 51h18v20H41z" />
+          <path className={styles.svgWave} d="M43 62c5-6 9 6 15 0" />
+        </g>
+        <path className={styles.svgOrbit} d="M12 57c14-18 28-28 47-29 12-1 23 3 31 12" />
+      </g>
+
+      <path className={styles.svgSpark} d="M17 28v8M13 32h8M81 67v10M76 72h10" />
+      <circle className={styles.svgDot} cx="78" cy="25" r="2" />
+    </svg>
+  );
+}
+
 /**
  * High-fidelity recreation of the VoiceShop widget running on a live Shopify
  * storefront: the assistant has taken over the collection page and is holding
@@ -44,7 +80,30 @@ export function StoreDemo({
   className?: string;
 }) {
   const [themeIndex, setThemeIndex] = useState(0);
+  const gridRef = useRef<HTMLDivElement>(null);
   const theme = storeThemes[themeIndex];
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      grid.dataset.visible = "true";
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          grid.dataset.visible = "true";
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" },
+    );
+    observer.observe(grid);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className={`${styles.wrap} ${className}`}>
@@ -126,14 +185,22 @@ export function StoreDemo({
               <span className={styles.backToStore}>Back to store</span>
             </div>
 
-            <div className={styles.grid}>
-              {products.slice(0, compact ? 4 : 8).map((product) => (
-                <div className={styles.card} key={product.name}>
+            <div
+              ref={gridRef}
+              className={styles.grid}
+            >
+              {products.slice(0, compact ? 4 : 8).map((product, index) => (
+                <div
+                  className={styles.card}
+                  key={product.name}
+                  style={{ "--product-index": index } as CSSProperties}
+                >
                   <span
                     className={styles.cardArt}
                     data-tone={product.tone}
                     aria-hidden="true"
                   >
+                    <ProductPopArt tone={product.tone} />
                     <i className={styles.openIcon}>↗</i>
                   </span>
                   <div className={styles.cardFoot}>

@@ -302,6 +302,107 @@
   background: linear-gradient(150deg, #e8d5c8, #f9f2ec 55%, #d8bda9);
 }
 
+.productPop {
+  position: absolute;
+  inset: 7%;
+  width: 86%;
+  height: 86%;
+  overflow: visible;
+  filter: drop-shadow(0 10px 18px color-mix(in srgb, var(--accent) 18%, transparent));
+}
+
+.svgClip {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.04) rotate(-16deg);
+}
+
+.grid[data-visible="true"] .card .svgClip {
+  animation: productMaskPop 920ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--product-index) * 90ms);
+}
+
+.popLayer {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .popLayer {
+  transform: scale(1.07) rotate(3deg);
+}
+
+.svgField {
+  fill: color-mix(in srgb, var(--accent) 78%, #171719);
+}
+
+.svgHalo {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 0.8;
+}
+
+.svgProduct {
+  fill: rgba(255, 255, 255, 0.94);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .svgProduct {
+  transform: translateY(-3px) scale(1.04);
+}
+
+.svgLabel {
+  fill: color-mix(in srgb, var(--accent) 68%, #111111);
+}
+
+.svgWave,
+.svgOrbit,
+.svgSpark {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.82);
+  stroke-linecap: round;
+}
+
+.svgWave {
+  stroke-width: 1.5;
+}
+
+.svgOrbit {
+  stroke-width: 0.85;
+  stroke-dasharray: 110;
+  stroke-dashoffset: 110;
+}
+
+.grid[data-visible="true"] .svgOrbit {
+  animation: productLineDraw 900ms ease forwards;
+  animation-delay: calc(220ms + var(--product-index) * 90ms);
+}
+
+.svgSpark {
+  stroke: color-mix(in srgb, var(--accent) 85%, #111111);
+  stroke-width: 1.2;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.grid[data-visible="true"] .svgSpark {
+  animation: productSpark 620ms ease-out forwards;
+  animation-delay: calc(460ms + var(--product-index) * 90ms);
+}
+
+.svgDot {
+  fill: color-mix(in srgb, var(--accent) 82%, #111111);
+  opacity: 0;
+}
+
+.grid[data-visible="true"] .svgDot {
+  animation: productDot 500ms ease-out forwards;
+  animation-delay: calc(560ms + var(--product-index) * 90ms);
+}
+
 .openIcon {
   position: absolute;
   top: 7px;
@@ -609,6 +710,46 @@
   }
 }
 
+@keyframes productMaskPop {
+  0% {
+    transform: scale(0.04) rotate(-16deg);
+  }
+  62% {
+    transform: scale(1.08) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes productLineDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes productSpark {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) rotate(-18deg);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes productDot {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes demoMic {
   0% {
     box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent);
@@ -618,5 +759,22 @@
   }
   100% {
     box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svgClip,
+  .svgOrbit,
+  .svgSpark,
+  .svgDot {
+    animation: none !important;
+    opacity: 1;
+    stroke-dashoffset: 0;
+    transform: none;
+  }
+
+  .popLayer,
+  .svgProduct {
+    transition: none;
   }
 }
