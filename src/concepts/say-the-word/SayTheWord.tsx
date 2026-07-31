@@ -5,26 +5,26 @@ import styles from "./say-the-word.module.css";
 
 const saidTiles = [
   {
-    src: "/images/open-shop.webp",
-    pos: "28% 42%",
+    src: "/images/store-aisle.webp",
+    pos: "42% 55%",
     said: "“something for a gift, under $60”",
     did: "Page curated · 5 matches",
   },
   {
-    src: "/images/signal-garden.webp",
-    pos: "72% 52%",
+    src: "/images/shelf-detail.webp",
+    pos: "55% 50%",
     said: "“what is this one for?”",
     did: "Answered — about the product on screen",
   },
   {
-    src: "/images/high-intent.webp",
-    pos: "24% 48%",
+    src: "/images/dense-catalog.webp",
+    pos: "40% 50%",
     said: "“only show me what's in stock”",
     did: "Filters applied",
   },
   {
-    src: "/images/guided-sale.webp",
-    pos: "44% 46%",
+    src: "/images/counter-moment.webp",
+    pos: "35% 50%",
     said: "“add two of those”",
     did: "Cart updated ✓ · BUNDLE10 applied",
   },
@@ -40,8 +40,8 @@ const deepDives = [
       "Follows “that one”, “the blue”, “the cheaper one”",
       "Never answers about a product they aren’t looking at",
     ],
-    image: "/images/signal-garden.webp",
-    pos: "70% 50%",
+    image: "/images/phone-in-store.webp",
+    pos: "58% 50%",
   },
   {
     tag: "Catalog",
@@ -52,8 +52,8 @@ const deepDives = [
       "Takes over the collection page with verified matches",
       "Re-indexes automatically as products, orders and reviews change",
     ],
-    image: "/images/open-shop.webp",
-    pos: "62% 45%",
+    image: "/images/dense-catalog.webp",
+    pos: "50% 50%",
     flip: true,
   },
   {
@@ -65,8 +65,8 @@ const deepDives = [
       "Navigates shoppers to any collection or product",
       "Adds to cart and surfaces the discounts that pair with it",
     ],
-    image: "/images/guided-sale.webp",
-    pos: "40% 50%",
+    image: "/images/counter-moment.webp",
+    pos: "40% 55%",
   },
 ];
 
@@ -355,11 +355,11 @@ export default function SayTheWord() {
       <section className={styles.posterBand} id="waitlist">
         <div className={styles.poster}>
           <Image
-            src="/images/open-shop.webp"
-            alt="A shopper browsing a boutique while a voice wave moves through the store"
+            src="/images/store-aisle.webp"
+            alt="A shopper browsing a rail of clothing in a minimal boutique"
             fill
             sizes="100vw"
-            style={{ objectFit: "cover", objectPosition: "50% 45%" }}
+            style={{ objectFit: "cover", objectPosition: "50% 58%" }}
           />
           <div className={styles.posterType} aria-hidden="true">
             <span>Say</span>

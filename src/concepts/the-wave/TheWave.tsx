@@ -60,8 +60,8 @@ export default function TheWave() {
       <section className={styles.hero} id="top">
         <Image
           className={styles.heroImage}
-          src="/images/open-shop.webp"
-          alt="A shopper browsing a boutique as a voice wave moves through the store"
+          src="/images/store-aisle.webp"
+          alt="A shopper browsing a rail of clothing in a sunlit minimal boutique"
           fill
           priority
           sizes="100vw"
@@ -179,11 +179,11 @@ export default function TheWave() {
           <Reveal className={styles.ownerVisual} delay={120}>
             <div className={styles.ownerPhoto}>
               <Image
-                src="/images/guided-sale.webp"
-                alt="A calm interior with a glowing thread connecting products"
+                src="/images/shelf-detail.webp"
+                alt="A shelf of unbranded amber bottles and ceramic jars in soft light"
                 fill
                 sizes="(max-width: 940px) 92vw, 44vw"
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", objectPosition: "55% 50%" }}
               />
             </div>
             <div className={styles.sessionCard}>
@@ -254,7 +254,7 @@ export default function TheWave() {
       <section className={styles.waitlistSection} id="waitlist">
         <Image
           className={styles.waitlistImage}
-          src="/images/signal-garden.webp"
+          src="/images/soft-texture.webp"
           alt=""
           fill
           sizes="100vw"
