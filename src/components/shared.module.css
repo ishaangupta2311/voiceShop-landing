@@ -1,0 +1,187 @@
+.voiceGlyph {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5px;
+  border-radius: 50%;
+  background: var(--glyph-bg, #1b1a17);
+  flex-shrink: 0;
+}
+
+.voiceGlyph span {
+  width: 2.5px;
+  border-radius: 999px;
+  background: var(--glyph-wave, #ffffff);
+  height: 8px;
+}
+
+.voiceGlyph span:nth-child(2),
+.voiceGlyph span:nth-child(4) {
+  height: 14px;
+}
+
+.voiceGlyph span:nth-child(3) {
+  height: 20px;
+}
+
+/*
+ * Theme swatches for ThemedDemo — neutral styling that sits comfortably on
+ * any light concept; the swatch color itself comes from the theme data.
+ */
+.swatchRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.swatchLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--demo-swatch-label, inherit);
+}
+
+.swatches {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.swatch span {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.swatch:hover span {
+  transform: scale(1.12);
+}
+
+.swatch[aria-pressed="true"] span {
+  transform: scale(1.18);
+  box-shadow:
+    0 0 0 3px var(--demo-swatch-ring, #ffffff),
+    0 0 0 5px currentColor;
+}
+
+.swatch:focus-visible {
+  outline: 3px solid var(--demo-swatch-ring-focus, #1b1a17);
+  outline-offset: 2px;
+}
+
+/*
+ * Waitlist form — structure lives here; each concept themes it by setting
+ * the --wl-* custom properties on an ancestor.
+ */
+.waitlist {
+  width: min(100%, 620px);
+}
+
+.waitlistRow {
+  display: flex;
+  gap: 10px;
+  padding: 7px;
+  border: var(--wl-border, 1.5px solid rgba(27, 26, 23, 0.2));
+  border-radius: var(--wl-radius, 999px);
+  background: var(--wl-surface, #ffffff);
+  box-shadow: var(--wl-shadow, none);
+}
+
+.waitlist input {
+  min-width: 0;
+  flex: 1;
+  min-height: 52px;
+  padding: 0 18px;
+  border: 0;
+  outline: 0;
+  border-radius: calc(var(--wl-radius, 999px) - 6px);
+  background: transparent;
+  color: var(--wl-ink, #1b1a17);
+  font-size: 16px;
+}
+
+.waitlist input::placeholder {
+  color: color-mix(in srgb, var(--wl-ink, #1b1a17) 45%, transparent);
+}
+
+.waitlist input:focus-visible {
+  box-shadow: 0 0 0 3px var(--wl-focus, #9ac1ff);
+}
+
+.waitlist button {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 0;
+  border-radius: calc(var(--wl-radius, 999px) - 6px);
+  background: var(--wl-button, #1b1a17);
+  color: var(--wl-button-ink, #ffffff);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: inherit;
+  white-space: nowrap;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.waitlist button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.waitlist button:focus-visible {
+  outline: 3px solid var(--wl-focus, #9ac1ff);
+  outline-offset: 3px;
+}
+
+.waitlistNote {
+  margin: 10px 16px 0;
+  color: var(--wl-note, #78736a);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .waitlistRow {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px;
+    border-radius: 22px;
+  }
+
+  .waitlist input,
+  .waitlist button {
+    width: 100%;
+    min-height: 54px;
+  }
+
+  .waitlist input {
+    padding: 0 14px;
+  }
+
+  .waitlistNote {
+    margin-inline: 8px;
+  }
+}

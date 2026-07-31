@@ -1,26 +1,39 @@
-import type { Metadata } from "next";
-import { Instrument_Serif, Manrope } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Fraunces, Manrope, Sora } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-manrope",
+  display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: "400",
   style: ["normal", "italic"],
-  variable: "--font-display",
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Digital Salesman — AI sales for Shopify",
-    template: "%s | Digital Salesman",
+    default: "VoiceShop — a voice-first AI sales agent for Shopify",
+    template: "%s | VoiceShop",
   },
   description:
-    "A voice-first AI sales assistant that helps Shopify shoppers discover products, get answers, and move confidently toward checkout.",
+    "VoiceShop is a voice-first AI sales agent for Shopify storefronts. Shoppers speak, the storefront responds — grounded in your real catalog and cart.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#070a10",
 };
 
 export default function RootLayout({
@@ -31,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${instrumentSerif.variable}`}
+      className={`${manrope.variable} ${fraunces.variable} ${sora.variable}`}
     >
       <body>{children}</body>
     </html>
