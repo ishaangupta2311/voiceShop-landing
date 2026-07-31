@@ -1,123 +1,173 @@
 import Image from "next/image";
+import { StoreDemo } from "@/components/StoreDemo";
 import { Reveal, WaitlistForm } from "@/components/shared";
 import styles from "./the-wave.module.css";
 
-const senses = [
-  ["👁", "Sees the page", "Knows the product on screen — “what is this for?” lands."],
-  ["🗂", "Knows the catalog", "Searches live products, prices, stock. Never invents."],
-  ["🧭", "Navigates", "Walks shoppers across the store as the talk flows."],
-  ["🎚", "Filters", "“Under $100, in stock” — applied on the page, instantly."],
-  ["🛒", "Carts", "Validated add-to-cart, mid-sentence."],
-  ["🏷", "Pairs deals", "Surfaces the discount that fits their cart."],
+const capabilities = [
+  {
+    n: "01",
+    title: "Hears what they mean",
+    body: "Shoppers describe things the way people actually talk. VoiceShop turns that into a real catalog query — no keywords, no filter menus.",
+  },
+  {
+    n: "02",
+    title: "Sees what they’re seeing",
+    body: "It knows the product, variant and price on screen, so “what is this for?” is answered about that item — never a random one.",
+  },
+  {
+    n: "03",
+    title: "Moves the storefront",
+    body: "Curates the collection page, applies filters, and walks shoppers to any part of the store as the conversation goes.",
+  },
+  {
+    n: "04",
+    title: "Closes the sale",
+    body: "Adds to cart mid-sentence and surfaces the discount that pairs with what’s already in there.",
+  },
 ];
 
-const intents = [
-  ["Ready to buy", "Gets a clear path: product, answer, cart, checkout."],
-  ["Browsing", "Gets curated pages instead of endless scrolling."],
+const intentStates = [
+  ["Ready to buy", "Gets a clean run: answer, product, cart, checkout."],
+  ["Browsing", "Gets a curated page instead of an endless scroll."],
+  ["Exploring", "Gets options framed by what they actually said."],
   ["Confused", "Gets a straight answer about the thing on their screen."],
-  ["About to leave", "Gets one honest, relevant reason to stay."],
+  ["About to leave", "Gets one relevant, honest reason to stay."],
 ];
 
-const soon = [
-  "Reviews, social proof & video demos in the conversation",
-  "Restock alerts & newsletter capture on smart triggers",
-  "Order-aware support for returning customers",
-  "A model that learns from every conversation",
+const faqs = [
+  [
+    "How does it fit my store’s look?",
+    "It reads your storefront styling and repaints itself to match — the panel, the buttons, the accents. Use the swatches on the demo to see it change.",
+  ],
+  [
+    "Can it invent a product that doesn’t exist?",
+    "No. Answers are grounded in your published catalog, live prices, current inventory and the shopper’s real cart.",
+  ],
+  [
+    "Does it handle a very large catalog?",
+    "That’s the point. The more you sell, the harder your store is to browse — and the more a shopper gains from just describing what they want.",
+  ],
+  [
+    "What do I see as the merchant?",
+    "Every session is captured and replayable, scored by intent, with the numbers collected in an analytics dashboard.",
+  ],
 ];
 
 export default function TheWave() {
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
+      {/* ============== HERO ============== */}
+      <section className={styles.hero} id="top">
         <Image
           className={styles.heroImage}
           src="/images/open-shop.webp"
-          alt="A shopper in a boutique as a blue voice wave moves through the store"
+          alt="A shopper browsing a boutique as a voice wave moves through the store"
           fill
           priority
           sizes="100vw"
         />
         <div className={styles.heroShade} aria-hidden="true" />
 
-        <header className={styles.header}>
-          <span className={styles.brand}>VoiceShop</span>
-          <span className={styles.brandNote}>for Shopify</span>
-          <a className={styles.headerCta} href="#wave-waitlist">
+        <header className={styles.nav}>
+          <a className={styles.logo} href="#top">
+            VoiceShop
+          </a>
+          <nav className={styles.navLinks} aria-label="Sections">
+            <a href="#demo">Product</a>
+            <a href="#how">How it works</a>
+            <a href="#owner">Analytics</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+          <a className={styles.navCta} href="#waitlist">
             Join the waitlist
           </a>
         </header>
 
         <div className={styles.heroCopy}>
+          <p className={styles.heroEyebrow}>
+            <span aria-hidden="true" />
+            Voice-first AI sales agent for Shopify
+          </p>
           <h1>
-            Your store can <em>hear</em> now.
+            Your store can
+            <br />
+            <em>hear</em> now.
           </h1>
-          <p>
-            VoiceShop is a voice-first AI sales agent that lives in your
-            storefront. Shoppers speak — and the store answers, rearranges,
-            and sells.
+          <p className={styles.heroSub}>
+            Shoppers speak. The storefront answers, rearranges itself around
+            what they asked for, and moves the cart — all inside your own theme.
           </p>
           <div className={styles.heroActions}>
-            <a className={styles.primaryCta} href="#wave-waitlist">
+            <a className={styles.ctaPrimary} href="#waitlist">
               Join the waitlist
             </a>
-            <a className={styles.ghostCta} href="#wave-listen">
+            <a className={styles.ctaGhost} href="#demo">
               Listen in ↓
             </a>
           </div>
         </div>
 
-        <div className={styles.heroWidget} aria-hidden="true">
-          <div className={styles.widgetHead}>
-            <span />
-            VoiceShop <em>listening</em>
-          </div>
-          <p className={styles.wShopper}>“that blue dress — do you have a medium?”</p>
-          <p className={styles.wAgent}>
-            The one you&apos;re looking at? Yes — two mediums left. Want it in
-            your cart?
-          </p>
-          <div className={styles.wWave}>
-            {[6, 12, 20, 10, 16, 8, 14, 6].map((h, i) => (
-              <i key={i} style={{ height: `${h}px`, animationDelay: `${i * 80}ms` }} />
-            ))}
-          </div>
-        </div>
+        <div className={styles.heroFade} aria-hidden="true" />
       </section>
 
-      <section className={styles.senses} id="wave-listen">
-        <Reveal>
+      {/* ============== DEMO ============== */}
+      <section className={styles.demoSection} id="demo">
+        <Reveal className={styles.demoIntro}>
+          <p className={styles.eyebrow}>One real conversation</p>
           <h2>
-            It doesn&apos;t chat. <em>It sells.</em>
+            It doesn&apos;t chat.
+            <br />
+            <em>It sells.</em>
           </h2>
           <p className={styles.sectionSub}>
-            Six senses, all grounded in your live store — theme-matched so it
-            feels native, built for catalogs of any size.
+            The shopper never touched a filter or a search box. Everything below
+            happened by voice — and the widget dressed itself in the store&apos;s
+            colours on the way in.
           </p>
         </Reveal>
-        <div className={styles.senseRow}>
-          {senses.map(([icon, title, body], index) => (
-            <Reveal key={title} className={styles.sense} delay={index * 60}>
-              <span aria-hidden="true">{icon}</span>
-              <h3>{title}</h3>
-              <p>{body}</p>
+        <Reveal className={styles.demoHolder} delay={100}>
+          <StoreDemo />
+        </Reveal>
+      </section>
+
+      {/* ============== CAPABILITIES ============== */}
+      <section className={styles.capSection} id="how">
+        <Reveal>
+          <p className={styles.eyebrow}>How it works</p>
+          <h2 className={styles.capTitle}>
+            Four things a good salesperson does.
+            <br />
+            <em>All of them, on every visit.</em>
+          </h2>
+        </Reveal>
+        <div className={styles.capList}>
+          {capabilities.map((cap, index) => (
+            <Reveal key={cap.n} className={styles.capRow} delay={index * 70}>
+              <span className={styles.capNum}>{cap.n}</span>
+              <h3>{cap.title}</h3>
+              <p>{cap.body}</p>
             </Reveal>
           ))}
         </div>
       </section>
 
-      <section className={styles.intent}>
-        <div className={styles.intentGrid}>
-          <Reveal className={styles.intentCopy}>
+      {/* ============== OWNER / INTENT ============== */}
+      <section className={styles.ownerSection} id="owner">
+        <div className={styles.ownerGrid}>
+          <Reveal className={styles.ownerCopy}>
+            <p className={styles.eyebrow}>For the merchant</p>
             <h2>
-              It reads the room —<em> every room.</em>
+              It reads the room —<br />
+              <em>every room.</em>
             </h2>
-            <p>
-              VoiceShop predicts each visitor&apos;s intent live and adapts the
-              sale to it. Every session lands in your dashboard, scored and
-              replayable, so you finally know why customers leave.
+            <p className={styles.sectionSub}>
+              VoiceShop scores each visitor&apos;s intent live and adapts. Every
+              session is captured and replayable, so you can finally see where
+              sales stall instead of guessing. Products, orders and reviews
+              re-index themselves the moment they change.
             </p>
             <ul className={styles.intentList}>
-              {intents.map(([state, response]) => (
+              {intentStates.map(([state, response]) => (
                 <li key={state}>
                   <strong>{state}</strong>
                   <span>{response}</span>
@@ -125,46 +175,83 @@ export default function TheWave() {
               ))}
             </ul>
           </Reveal>
-          <Reveal className={styles.intentVisual} delay={140}>
-            <Image
-              src="/images/guided-sale.webp"
-              alt="A calm living room with a glowing thread connecting products"
-              fill
-              sizes="(max-width: 900px) 100vw, 44vw"
-            />
-            <div className={styles.intentBadge}>
-              <em>session #4,183</em>
-              intent: ready to buy · replay saved
+
+          <Reveal className={styles.ownerVisual} delay={120}>
+            <div className={styles.ownerPhoto}>
+              <Image
+                src="/images/guided-sale.webp"
+                alt="A calm interior with a glowing thread connecting products"
+                fill
+                sizes="(max-width: 940px) 92vw, 44vw"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+            <div className={styles.sessionCard}>
+              <div className={styles.sessionTop}>
+                <span className={styles.sessionDot} aria-hidden="true" />
+                Session #4,183
+                <em>replay saved</em>
+              </div>
+              <p className={styles.sessionLine}>
+                Asked for “something calming”, compared two blends, dropped at
+                the shipping question.
+              </p>
+              <div className={styles.sessionTags}>
+                <span>intent: browsing → confused</span>
+                <span>4m 12s</span>
+              </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <Reveal className={styles.shopifyStrip}>
-        <p>
-          Already on Shopify? VoiceShop drops in, reads your theme, and
-          auto-indexes your products, orders, and reviews — and keeps them
-          fresh on every change.
-        </p>
-        <a href="#wave-waitlist">Get early access</a>
-      </Reveal>
-
-      <section className={styles.soon}>
+      {/* ============== ROADMAP ============== */}
+      <section className={styles.soonSection}>
         <Reveal>
-          <h2>
+          <p className={styles.eyebrow}>On the way</p>
+          <h2 className={styles.soonTitle}>
             Still <em>tuning</em>
           </h2>
         </Reveal>
-        <ul className={styles.soonList}>
-          {soon.map((item, index) => (
-            <Reveal key={item} delay={index * 70}>
-              <li>{item}</li>
+        <div className={styles.soonList}>
+          {[
+            ["Social proof in-conversation", "Reviews, ratings and video demos where the decision happens."],
+            ["Triggered capture", "Restock alerts and newsletter sign-ups fired at the right moment."],
+            ["Order-aware support", "Help for logged-in, returning customers using their order history."],
+            ["A model that learns", "Every conversation feeds back into a better sales agent."],
+          ].map(([title, body], index) => (
+            <Reveal key={title} className={styles.soonRow} delay={index * 60}>
+              <span className={styles.soonBadge}>Coming soon</span>
+              <h3>{title}</h3>
+              <p>{body}</p>
             </Reveal>
           ))}
-        </ul>
+        </div>
       </section>
 
-      <section className={styles.waitlist} id="wave-waitlist">
+      {/* ============== FAQ ============== */}
+      <section className={styles.faqSection} id="faq">
+        <Reveal>
+          <p className={styles.eyebrow}>Questions</p>
+          <h2 className={styles.faqTitle}>Before you ask</h2>
+        </Reveal>
+        <div className={styles.faqList}>
+          {faqs.map(([q, a], index) => (
+            <Reveal key={q} delay={index * 50}>
+              <details className={styles.faqItem}>
+                <summary>
+                  {q}
+                  <span aria-hidden="true" />
+                </summary>
+                <p>{a}</p>
+              </details>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ============== WAITLIST ============== */}
+      <section className={styles.waitlistSection} id="waitlist">
         <Image
           className={styles.waitlistImage}
           src="/images/signal-garden.webp"
@@ -177,14 +264,46 @@ export default function TheWave() {
           <h2>
             Give your store a <em>voice.</em>
           </h2>
-          <p>Early access is coming to Shopify storefronts.</p>
+          <p>
+            VoiceShop is coming to Shopify storefronts. Join the waitlist for
+            early access.
+          </p>
           <WaitlistForm id="wave-email" />
         </Reveal>
       </section>
 
+      {/* ============== FOOTER ============== */}
       <footer className={styles.footer}>
-        <span>VoiceShop</span>
-        <span>The store that listens</span>
+        <div className={styles.footerTop}>
+          <div className={styles.footerBrand}>
+            <span className={styles.footerLogo}>VoiceShop</span>
+            <p>The voice-first AI sales agent for Shopify storefronts.</p>
+          </div>
+          <div className={styles.footerCols}>
+            <div>
+              <h4>Product</h4>
+              <a href="#demo">Live demo</a>
+              <a href="#how">How it works</a>
+              <a href="#owner">Analytics</a>
+              <a href="#faq">FAQ</a>
+            </div>
+            <div>
+              <h4>Company</h4>
+              <a href="#top">About</a>
+              <a href="#waitlist">Waitlist</a>
+              <a href="#top">Contact</a>
+            </div>
+            <div>
+              <h4>Legal</h4>
+              <a href="#top">Privacy</a>
+              <a href="#top">Terms</a>
+            </div>
+          </div>
+        </div>
+        <div className={styles.footerBase}>
+          <span>© {new Date().getFullYear()} VoiceShop</span>
+          <span>The store that listens</span>
+        </div>
       </footer>
     </div>
   );

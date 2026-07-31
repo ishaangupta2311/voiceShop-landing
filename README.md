@@ -3,8 +3,7 @@
 Marketing website for VoiceShop, the voice-first AI sales agent for Shopify
 (internally the `digital-salesman-app` repository). This branch holds five
 switchable landing-page concepts — the active concept lives in the URL path
-(`/say-the-word`, `/the-wave`, `/signal`, `/loudmouth`, `/subtitles`) and a
-persistent control cycles between them.
+(`/say-the-word`, `/the-wave`) and a persistent control cycles between them.
 
 ## Stack
 
