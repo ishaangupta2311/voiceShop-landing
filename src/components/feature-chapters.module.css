@@ -1,0 +1,428 @@
+/* =========================================================================
+   Feature chapters — the part of the page that actually shows the product.
+   Dark editorial band, then a hard cut to cream for the full feature index.
+   ========================================================================= */
+
+.section {
+  position: relative;
+  z-index: 3;
+  padding: 118px 0 0;
+  background: #0e0d0b;
+}
+
+.inner {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.intro {
+  max-width: 720px;
+  margin-bottom: 74px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 18px;
+  color: #c7af80;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 26px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.introTitle {
+  margin: 0 0 20px;
+  font-size: clamp(2.2rem, 5.2vw, 3.9rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.introTitle em {
+  color: #c7af80;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.introSub {
+  margin: 0;
+  max-width: 620px;
+  color: rgba(241, 238, 231, 0.62);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+/* ---------- chapters ---------- */
+
+.chapter {
+  padding: 0 0 104px;
+  border-top: 1px solid rgba(241, 238, 231, 0.1);
+}
+
+.chapter:first-of-type {
+  border-top: 0;
+}
+
+.chapterHead {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: 34px;
+  align-items: start;
+  padding: 54px 0 40px;
+}
+
+.chapterNum {
+  padding-top: 8px;
+  color: rgba(199, 175, 128, 0.5);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+}
+
+.chapterTitle {
+  margin: 0;
+  font-size: clamp(1.75rem, 3.6vw, 2.85rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.chapterTitle em {
+  color: #c7af80;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.chapterAside {
+  padding-top: 7px;
+}
+
+.chapterLede {
+  margin: 0 0 22px;
+  color: rgba(241, 238, 231, 0.66);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.chapterList {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chapterList li {
+  display: grid;
+  grid-template-columns: 15px 1fr;
+  gap: 11px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(241, 238, 231, 0.09);
+  color: rgba(241, 238, 231, 0.86);
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+
+.chapterList li::before {
+  margin-top: 0.52em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c7af80;
+  content: "";
+}
+
+.chapterList li span {
+  color: rgba(241, 238, 231, 0.52);
+}
+
+.chapterList li strong {
+  color: #f1eee7;
+  font-weight: 700;
+}
+
+/* ---------- four tools band ---------- */
+
+.tools {
+  padding: 62px 0 96px;
+  border-top: 1px solid rgba(241, 238, 231, 0.1);
+}
+
+.toolsHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.toolsHead h3 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.toolsHead p {
+  margin: 0;
+  max-width: 430px;
+  color: rgba(241, 238, 231, 0.55);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.toolsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(241, 238, 231, 0.12);
+  border-radius: 16px;
+  background: rgba(241, 238, 231, 0.12);
+}
+
+.tool {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 24px 22px 26px;
+  background: #100f0d;
+  transition: background 420ms ease;
+}
+
+.tool[data-on="true"] {
+  background: #17150f;
+}
+
+.toolName {
+  color: #c7af80;
+  font-family: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.toolBody {
+  flex: 1;
+  margin: 0;
+  color: rgba(241, 238, 231, 0.6);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.toolStatusLine {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(241, 238, 231, 0.34);
+  font-size: 0.72rem;
+  font-style: italic;
+  transition: color 420ms ease;
+}
+
+.tool[data-on="true"] .toolStatusLine {
+  color: rgba(241, 238, 231, 0.8);
+}
+
+.toolStatusLine i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(241, 238, 231, 0.2);
+  transition: background 420ms ease;
+}
+
+.tool[data-on="true"] .toolStatusLine i {
+  background: #c7af80;
+  box-shadow: 0 0 10px rgba(199, 175, 128, 0.7);
+}
+
+.toolActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.toolActions span {
+  padding: 3px 8px;
+  border: 1px solid rgba(241, 238, 231, 0.14);
+  border-radius: 99px;
+  color: rgba(241, 238, 231, 0.55);
+  font-family: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.66rem;
+}
+
+/* ---------- full feature index (cream band) ---------- */
+
+.index {
+  padding: 96px 0 104px;
+  background: #f1eee7;
+  color: #17160f;
+}
+
+.indexHead {
+  max-width: 640px;
+  margin-bottom: 52px;
+}
+
+.indexHead .eyebrow {
+  color: #8a6d33;
+}
+
+.indexTitle {
+  margin: 0 0 14px;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.indexTitle em {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.indexSub {
+  margin: 0;
+  color: rgba(23, 22, 15, 0.62);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.indexGroups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 44px 58px;
+}
+
+.indexGroup h4 {
+  margin: 0 0 4px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #17160f;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.indexList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.indexList li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 16px;
+  align-items: baseline;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(23, 22, 15, 0.12);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.indexList li b {
+  font-weight: 700;
+}
+
+.indexList li p {
+  grid-column: 1 / -1;
+  margin: 3px 0 0;
+  color: rgba(23, 22, 15, 0.58);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.soonTag {
+  flex: none;
+  padding: 3px 8px;
+  border: 1px solid rgba(23, 22, 15, 0.24);
+  border-radius: 99px;
+  color: rgba(23, 22, 15, 0.55);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.liveTag {
+  border-color: rgba(29, 117, 81, 0.4);
+  background: rgba(29, 117, 81, 0.1);
+  color: #145c3f;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1040px) {
+  .chapterHead {
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 20px 24px;
+    padding: 46px 0 34px;
+  }
+
+  .chapterAside {
+    grid-column: 2;
+    padding-top: 0;
+  }
+
+  .toolsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding-top: 84px;
+  }
+
+  .inner {
+    width: calc(100% - 32px);
+  }
+
+  .chapterHead {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .chapterAside {
+    grid-column: 1;
+  }
+
+  .chapter {
+    padding-bottom: 74px;
+  }
+
+  .toolsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .indexGroups {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .index {
+    padding: 72px 0 80px;
+  }
+}

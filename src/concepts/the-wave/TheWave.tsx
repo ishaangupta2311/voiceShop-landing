@@ -1,39 +1,9 @@
 import Image from "next/image";
 import { StoreDemo } from "@/components/StoreDemo";
+import { FeatureChapters } from "@/components/FeatureChapters";
 import { Reveal, WaitlistForm } from "@/components/shared";
 import WaveMotion from "./WaveMotion";
 import styles from "./the-wave.module.css";
-
-const capabilities = [
-  {
-    n: "01",
-    title: "Hears what they mean",
-    body: "Shoppers describe things the way people actually talk. VoiceShop turns that into a real catalog query — no keywords, no filter menus.",
-  },
-  {
-    n: "02",
-    title: "Sees what they’re seeing",
-    body: "It knows the product, variant and price on screen, so “what is this for?” is answered about that item — never a random one.",
-  },
-  {
-    n: "03",
-    title: "Moves the storefront",
-    body: "Curates the collection page, applies filters, and walks shoppers to any part of the store as the conversation goes.",
-  },
-  {
-    n: "04",
-    title: "Closes the sale",
-    body: "Adds to cart mid-sentence and surfaces the discount that pairs with what’s already in there.",
-  },
-];
-
-const intentStates = [
-  ["Ready to buy", "Gets a clean run: answer, product, cart, checkout."],
-  ["Browsing", "Gets a curated page instead of an endless scroll."],
-  ["Exploring", "Gets options framed by what they actually said."],
-  ["Confused", "Gets a straight answer about the thing on their screen."],
-  ["About to leave", "Gets one relevant, honest reason to stay."],
-];
 
 const faqs = [
   [
@@ -81,7 +51,8 @@ export default function TheWave() {
           </a>
           <nav className={styles.navLinks} aria-label="Sections">
             <a href="#demo">Product</a>
-            <a href="#how">How it works</a>
+            <a href="#features">Features</a>
+            <a href="#everything">Everything</a>
             <a href="#owner">Analytics</a>
             <a href="#faq">FAQ</a>
           </nav>
@@ -142,37 +113,10 @@ export default function TheWave() {
         </Reveal>
       </section>
 
-      {/* ============== CAPABILITIES ============== */}
-      <section
-        className={styles.capSection}
-        id="how"
-        data-wave-section
-      >
-        <Reveal>
-          <p className={styles.eyebrow}>How it works</p>
-          <h2 className={styles.capTitle}>
-            Four things a good salesperson does.
-            <br />
-            <em>All of them, on every visit.</em>
-          </h2>
-        </Reveal>
-        <div className={styles.capList} data-scroll-cards>
-          {capabilities.map((cap) => (
-            <article
-              key={cap.n}
-              className={styles.capRow}
-              data-scroll-card
-            >
-              <span className={styles.capNum}>{cap.n}</span>
-              <h3>{cap.title}</h3>
-              <p>{cap.body}</p>
-              <span className={styles.capArrow} aria-hidden="true">
-                ↗
-              </span>
-            </article>
-          ))}
-        </div>
-      </section>
+      {/* ============== FEATURE CHAPTERS (films) ============== */}
+      <div id="how">
+        <FeatureChapters />
+      </div>
 
       {/* ============== OWNER / INTENT ============== */}
       <section
@@ -188,19 +132,12 @@ export default function TheWave() {
               <em>every room.</em>
             </h2>
             <p className={styles.sectionSub}>
-              VoiceShop scores each visitor&apos;s intent live and adapts. Every
-              session is captured and replayable, so you can finally see where
-              sales stall instead of guessing. Products, orders and reviews
-              re-index themselves the moment they change.
+              A shop floor tells you everything. A website tells you a bounce
+              rate. VoiceShop closes that gap: every conversation is captured
+              and replayable, scored by what the shopper was actually trying to
+              do — so &ldquo;why did they leave?&rdquo; finally has an answer
+              instead of a theory.
             </p>
-            <ul className={styles.intentList}>
-              {intentStates.map(([state, response]) => (
-                <li key={state}>
-                  <strong>{state}</strong>
-                  <span>{response}</span>
-                </li>
-              ))}
-            </ul>
           </Reveal>
 
           <Reveal className={styles.ownerVisual} delay={120}>
@@ -229,30 +166,6 @@ export default function TheWave() {
               </div>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* ============== ROADMAP ============== */}
-      <section className={styles.soonSection}>
-        <Reveal>
-          <p className={styles.eyebrow}>On the way</p>
-          <h2 className={styles.soonTitle}>
-            Still <em>tuning</em>
-          </h2>
-        </Reveal>
-        <div className={styles.soonList}>
-          {[
-            ["Social proof in-conversation", "Reviews, ratings and video demos where the decision happens."],
-            ["Triggered capture", "Restock alerts and newsletter sign-ups fired at the right moment."],
-            ["Order-aware support", "Help for logged-in, returning customers using their order history."],
-            ["A model that learns", "Every conversation feeds back into a better sales agent."],
-          ].map(([title, body], index) => (
-            <Reveal key={title} className={styles.soonRow} delay={index * 60}>
-              <span className={styles.soonBadge}>Coming soon</span>
-              <h3>{title}</h3>
-              <p>{body}</p>
-            </Reveal>
-          ))}
         </div>
       </section>
 
@@ -318,7 +231,8 @@ export default function TheWave() {
             <div>
               <h4>Product</h4>
               <a href="#demo">Live demo</a>
-              <a href="#how">How it works</a>
+              <a href="#features">Features</a>
+              <a href="#everything">Every capability</a>
               <a href="#owner">Analytics</a>
               <a href="#faq">FAQ</a>
             </div>
