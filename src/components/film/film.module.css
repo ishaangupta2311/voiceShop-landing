@@ -718,33 +718,91 @@
   animation: filmBlink 1s steps(2) infinite;
 }
 
-.voiceMeta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
+/* The spoken answer always lands as real product cards — the widget shows
+   products of interest in the conversation, not just prose about them. */
+.voiceResults {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 540px;
 }
 
-.voicePill {
-  padding: 5px 10px;
+.voiceResult {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 11px;
+  padding: 11px;
   border: 1px solid var(--ui-line);
-  border-radius: 99px;
-  color: var(--ui-muted);
-  font-size: 0.62rem;
-  font-weight: 700;
+  border-radius: 12px;
+  background: var(--ui-panel);
   opacity: 0;
-  transform: translateY(5px);
+  transform: translateY(10px);
   transition:
-    opacity 300ms ease,
-    transform 320ms ease;
+    opacity 380ms ease,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.voicePill[data-in="true"] {
+.voiceResult[data-in="true"] {
   opacity: 1;
   transform: none;
 }
 
-.voicePill strong {
-  color: var(--ui-accent);
+.voiceResult > i {
+  display: grid;
+  width: 42px;
+  height: 48px;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--ui-soft);
+}
+
+.voiceResult > i svg {
+  width: 25px;
+  height: 25px;
+  color: color-mix(in srgb, var(--ui-accent) 72%, #000);
+}
+
+.voiceResult strong {
+  display: block;
+  font-size: 0.74rem;
+  letter-spacing: -0.01em;
+}
+
+.voiceResult em {
+  display: block;
+  margin-top: 2px;
+  color: var(--ui-muted);
+  font-size: 0.63rem;
+  font-style: normal;
+  line-height: 1.4;
+}
+
+.voiceResultFoot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 0.63rem;
+  font-weight: 700;
+}
+
+/* "2 of 8 shown here for …" — the widget's own in-thread result label. */
+.shownLabel {
+  margin: 1px 0 0;
+  color: var(--ui-muted);
+  font-size: 0.57rem;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+.shownLabel[data-in="true"] {
+  opacity: 1;
+}
+
+.shownLabel em {
+  color: var(--ui-ink);
+  font-style: normal;
 }
 
 /* =========================================================================
@@ -1706,6 +1764,10 @@
 
   .voiceTranscript {
     font-size: 1.06rem;
+  }
+
+  .voiceResults {
+    grid-template-columns: 1fr;
   }
 
   .panel,
