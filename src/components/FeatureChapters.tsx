@@ -8,7 +8,6 @@ import { CompareFilm } from "./film/CompareFilm";
 import { RetrievalFilm } from "./film/RetrievalFilm";
 import { StageFilm } from "./film/StageFilm";
 import { VoiceFilm } from "./film/VoiceFilm";
-import { useFilm } from "./film/useFilm";
 import styles from "./feature-chapters.module.css";
 
 /* ------------------------------------------------------------------------ *
@@ -39,7 +38,7 @@ const chapters: Chapter[] = [
     features: [
       ["Live voice sessions", "Mic in, speech out, with a visible Listening / Speaking / Connecting state the shopper can trust."],
       ["Natural language, not search terms", "“Something for focus that won't keep me up” becomes a real catalog query with real constraints."],
-      ["Text and voice share one brain", "Both pipelines call the same tools against the same catalog, so the answers can't diverge."],
+      ["Text and voice share one brain", "Typed or spoken, it works from the same catalog and the same rules, so the answers can't diverge."],
       ["Conversation continuity", "The session stays open — the next sentence is a follow-up, not a fresh start."],
     ],
     film: <VoiceFilm />,
@@ -94,9 +93,9 @@ const chapters: Chapter[] = [
         <em>without the back button.</em>
       </>
     ),
-    lede: "“What's the difference between these two?” is the question that stalls the most carts. It's one tool call, not three page visits and a memory test.",
+    lede: "“What's the difference between these two?” is the question that stalls the most carts. It gets answered in place, not with three page visits and a memory test.",
     features: [
-      ["Two to eight products, side by side", "One call renders the comparison — no navigating through each product page to collect facts."],
+      ["Two to eight products, side by side", "The whole comparison is assembled at once — no navigating through each product page to collect facts."],
       ["Differences first", "Only the rows where products actually disagree, with All details one tap away."],
       ["Built for the first fold", "Compact product headers and sticky row labels, so the differing rows start on screen."],
       ["Every cell verified", "Prices, formats and availability are live catalog facts, not summarised prose."],
@@ -133,7 +132,7 @@ const chapters: Chapter[] = [
     lede: "You finally get to watch the sales floor. Not aggregate traffic — the actual conversations, scored by what the shopper was trying to do.",
     features: [
       ["Live intent scoring", "Buying, browsing, exploring, confused, or about to leave — scored per visitor and rolled up in the dashboard."],
-      ["Session replay", "Any conversation replays turn by turn, including the tool calls the agent made."],
+      ["Session replay", "Any conversation replays turn by turn, including what it looked up to answer."],
       ["Unanswered questions", "The things it couldn't answer are collected, so gaps in the catalog and copy surface themselves."],
       ["Playground", "Run the real agent against your live catalog before a customer does."],
       ["Settings", "Model, system prompt and selling tone, with theme and re-index behaviour alongside."],
@@ -142,71 +141,6 @@ const chapters: Chapter[] = [
     film: <AnalyticsFilm />,
   },
 ];
-
-/* ------------------------------------------------------------------------ */
-
-const TOOLS = [
-  {
-    name: "shop_products",
-    body: "Everything about products, in one place. The action argument carries the shopper's goal.",
-    status: "Shopping the catalog…",
-    actions: ["discover", "compare", "inspect", "browse", "inventory"],
-  },
-  {
-    name: "navigate_store",
-    body: "Resolves and opens non-product destinations — home, contact, policies, collections, cart.",
-    status: "Taking you there…",
-    actions: ["path", "destination"],
-  },
-  {
-    name: "manage_cart",
-    body: "The cart contract. Backed by the store's real cart, so nothing about checkout changes.",
-    status: "Updating your cart…",
-    actions: ["add", "remove", "view", "set_quantity"],
-  },
-  {
-    name: "lookup_orders",
-    body: "Separate on purpose: it reads authenticated customer data, not the public storefront.",
-    status: "Checking your orders…",
-    actions: ["order status"],
-  },
-];
-
-const TOOL_STEPS = [2200, 2200, 2200, 2200] as const;
-
-function ToolsBand() {
-  const { ref, step } = useFilm<HTMLDivElement>(TOOL_STEPS, { restStep: 0 });
-
-  return (
-    <div className={styles.tools} ref={ref}>
-      <Reveal className={styles.toolsHead}>
-        <h3>Four tools, one per shopper goal.</h3>
-        <p>
-          The agent isn&apos;t improvising with a bag of overlapping functions.
-          It has four, each a strict contract — which is why it can be held to
-          what your catalog actually says.
-        </p>
-      </Reveal>
-      <div className={styles.toolsGrid}>
-        {TOOLS.map((tool, index) => (
-          <div key={tool.name} className={styles.tool} data-on={step === index ? "true" : undefined}>
-            <span className={styles.toolName}>{tool.name}</span>
-            <p className={styles.toolBody}>{tool.body}</p>
-            <div className={styles.toolActions}>
-              {tool.actions.map((action) => (
-                <span key={action}>{action}</span>
-              ))}
-            </div>
-            <span className={styles.toolStatusLine}>
-              <i />
-              {tool.status}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 /* ------------------------------------------------------------------------ */
 
@@ -313,8 +247,6 @@ export function FeatureChapters() {
               <Reveal delay={index === 0 ? 0 : 60}>{chapter.film}</Reveal>
             </article>
           ))}
-
-          <ToolsBand />
         </div>
       </section>
 

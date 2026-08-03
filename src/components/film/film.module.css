@@ -495,6 +495,11 @@
   background: #f4f1ea;
 }
 
+/* Bubbles carrying structured content need the panel's full width. */
+.msgWide {
+  max-width: 100%;
+}
+
 .fromShopper {
   align-self: flex-end;
   border-bottom-right-radius: 4px;
@@ -1236,6 +1241,12 @@
    Film 4 — Grounded comparison
    ========================================================================= */
 
+.compareSplit {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
 .compare {
   display: flex;
   flex: 1;
@@ -1243,6 +1254,48 @@
   gap: 11px;
   padding: 15px 17px;
   min-width: 0;
+}
+
+/* Larger comparison sets scroll sideways rather than crushing the columns —
+   the same behaviour the real stage has. */
+.compareScroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.compareScroll .compareGrid {
+  min-width: 430px;
+}
+
+/* The model's spoken answer, enumerated — the differences are stated, not
+   just tabulated. */
+.diffList {
+  display: grid;
+  gap: 4px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.diffList li {
+  font-size: 0.62rem;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 300ms ease,
+    transform 320ms ease;
+}
+
+.diffList li[data-in="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+.diffList b {
+  margin-right: 4px;
+  color: color-mix(in srgb, var(--ui-accent) 80%, #000);
+  font-weight: 800;
 }
 
 .compareHead {

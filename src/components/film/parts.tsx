@@ -141,26 +141,30 @@ export function Panel({
   );
 }
 
+/** A chat bubble. Rendered as a div, not a p — bubbles can contain lists. */
 export function Msg({
   from,
   shown,
   voice,
+  wide,
   children,
 }: {
   from: "agent" | "shopper";
   shown: boolean;
   voice?: boolean;
+  /** Lets a bubble holding structured content use the full panel width. */
+  wide?: boolean;
   children: ReactNode;
 }) {
   return (
-    <p
+    <div
       className={`${styles.msg} ${
         from === "agent" ? styles.fromAgent : styles.fromShopper
-      } ${voice ? styles.msgVoice : ""}`}
+      } ${voice ? styles.msgVoice : ""} ${wide ? styles.msgWide : ""}`}
       data-in={shown ? "true" : undefined}
     >
       {children}
-    </p>
+    </div>
   );
 }
 

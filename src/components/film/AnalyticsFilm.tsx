@@ -137,15 +137,15 @@ export function AnalyticsFilm({ accent }: { accent?: string }) {
                 <div className={styles.stageKicker}>Playground</div>
                 <p className={styles.compareTakeaway}>
                   Type anything a customer might. It runs the real agent against
-                  your live catalog and shows every tool call it made — before a
-                  customer ever sees it.
+                  your live catalog, so you see the answer they would get —
+                  before they get it.
                 </p>
                 <div className={styles.composer} style={{ border: 0, padding: 0 }}>
                   <span className={styles.composerField}>
                     “do you have anything for focus under $20?”
                   </span>
                 </div>
-                <span className={styles.toolStatus}>shop_products · discover</span>
+                <span className={styles.toolStatus}>Finding the best matches…</span>
               </div>
             )}
 
